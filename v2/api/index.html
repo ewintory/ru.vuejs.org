@@ -598,7 +598,7 @@
 <li><p><strong>Тип:</strong> <code>{ [key: string]: string | Function | Object }</code></p>
 </li>
 <li><p><strong>Подробности:</strong></p>
-<p>Объект, ключи которого — выражения для наблюдения, а значения — коллбэки, вызываемые при их изменении. Значения также могут строками с именами методов, или объектами, содержащими дополнительные опции. Экземпляр Vue вызовет <code>$watch()</code> соответствующий каждому ключу объекта при своём создании.</p>
+<p>Объект, ключи которого — выражения для наблюдения, а значения — коллбэки, вызываемые при их изменении. Значения также могут быть строками с именами методов, или объектами, содержащими дополнительные опции. Экземпляр Vue вызовет <code>$watch()</code> соответствующий каждому ключу объекта при своём создании.</p>
 </li>
 <li><p><strong>Пример:</strong></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">b</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">c</span>: <span class="number">3</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">watch</span>: &#123;</div><div class="line">    <span class="attr">a</span>: <span class="function"><span class="keyword">function</span> (<span class="params">val, oldVal</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'новое значение: %s, старое значение: %s'</span>, val, oldVal)</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// строка с именем метода:</span></div><div class="line">    b: <span class="string">'someMethod'</span>,</div><div class="line">    <span class="comment">// глубокий (рекурсивный) наблюдатель:</span></div><div class="line">    c: &#123;</div><div class="line">      <span class="attr">handler</span>: <span class="function"><span class="keyword">function</span> (<span class="params">val, oldVal</span>) </span>&#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">      <span class="attr">deep</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">vm.a = <span class="number">2</span> <span class="comment">// -&gt; новое значение: 2, старое значение: 1</span></div></pre></td></tr></table></figure>
@@ -1407,7 +1407,7 @@
 </li>
 <li><p><strong>Модификаторы:</strong></p>
 <ul>
-<li><code>.prop</code> — используется для связывания в качестве DOM-свойства, а не атрибута (<a href="http://stackoverflow.com/questions/6003819/properties-and-attributes-in-html#answer-6004028" target="_blank" rel="external">в чём разница?</a>).</li>
+<li><code>.prop</code> — используется для связывания в качестве DOM-свойства, а не атрибута (<a href="http://stackoverflow.com/questions/6003819/properties-and-attributes-in-html#answer-6004028" target="_blank" rel="external">в чём разница?</a>). Если тег является компонентом, то <code>.prop</code> будет устанавливать свойство на <code>$el</code> компонента.</li>
 <li><code>.camel</code> — (2.1.0+) преобразует имена атрибутов из kebab-case в camelCase.</li>
 <li><code>.sync</code> — (2.3.0+) синтаксический сахар, который будет преобразован в обработчик <code>v-on</code> для обновления связанного значения.</li>
 </ul>
@@ -1447,7 +1447,7 @@
 <ul>
 <li><a href="../guide/forms.html#lazy"><code>.lazy</code></a> — подписаться на события <code>change</code>, а не <code>input</code></li>
 <li><a href="../guide/forms.html#number"><code>.number</code></a> — приводить введённую строку к числу</li>
-<li><a href="../guild/forms.html#trim"><code>.trim</code></a> — удалять пробелы в начале и в конце введённой строки</li>
+<li><a href="../guide/forms.html#trim"><code>.trim</code></a> — удалять пробелы в начале и в конце введённой строки</li>
 </ul>
 </li>
 <li><p><strong>Использование:</strong></p>
@@ -1638,6 +1638,7 @@
 </blockquote>
 <p>В основном используется для сохранения состояния компонента, чтобы избежать повторного рендеринга.</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- базовый вариант --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"view"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- несколько потомков --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">comp-a</span> <span class="attr">v-if</span>=<span class="string">"a &gt; 1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp-a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">comp-b</span> <span class="attr">v-else</span>&gt;</span><span class="tag">&lt;/<span class="name">comp-b</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- использование вместе с &lt;transition&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">transition</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"view"</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Обратите внимание, <code>&lt;keep-alive&gt;</code> предназначен для случая, когда есть один прямой дочерний компонент, который переключается. Он не будет работать, если в нём есть <code>v-for</code>. При наличии несколько дочерних компонентов отображаемых по условию, как указано выше, <code>&lt;keep-alive&gt;</code> требует, чтобы отображался только один дочерний компонент  в один момент времени.</p>
 </li>
 <li><p><strong><code>include</code> и <code>exclude</code></strong></p>
 <blockquote>
