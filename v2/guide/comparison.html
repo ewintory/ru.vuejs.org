@@ -594,22 +594,11 @@
         <div id="ad">
   <script>
     (function () {
-      var showConfPromo = Math.random() <= 0.33
-      if (showConfPromo) {
-        var c = document.createElement('div')
-        c.id = 'conf-promo'
-        c.innerHTML = '<a href="https://conf.vuejs.org" target="_blank">' +
-          '<img src="/images/conf.png" alt="vueconf">' +
-          '<span>The first VueConf EU is being held in Wrocław, Poland, June 21-23!</span>'
-        '</a>'
-        document.getElementById('ad').appendChild(c)
-      } else {
-        var s = document.createElement('script')
-        s.setAttribute('async', '')
-        s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
-        s.id = '_carbonads_js'
-        document.getElementById('ad').appendChild(s)
-      }
+      var s = document.createElement('script')
+      s.setAttribute('async', '')
+      s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
+      s.id = '_carbonads_js'
+      document.getElementById('ad').appendChild(s)
     })()
   </script>
 </div>
@@ -637,7 +626,7 @@
 <p>В целом, это устраняет необходимость целого класса оптимизаций производительности для разработчика, что позволяет больше сосредоточиться на построении самого приложения по мере его масштабирования.</p>
 <h3 id="HTML-amp-CSS"><a href="#HTML-amp-CSS" class="headerlink" title="HTML &amp; CSS"></a>HTML &amp; CSS</h3><p>В React, абсолютно всё — это JavaScript. Не только структуры HTML, выраженные через JSX, последние тенденции также включают управление CSS внутри JavaScript. Этот подход имеет свои преимущества, но также заставляет идти на компромиссы, которые могут показаться неэффективными для каждого разработчика.</p>
 <p>Vue охватывает классические веб-технологии и основывается на них. Чтобы показать вам что это значит, мы рассмотрим несколько примеров.</p>
-<h4 id="JSX-vs-Шаблоны"><a href="#JSX-vs-Шаблоны" class="headerlink" title="JSX vs Шаблоны"></a>JSX vs Шаблоны</h4><p>В React все компоненты реализуют свой UI в render-функциях с использованием JSX, декларативныим XML-подобным синтаксисом, который работает в JavaScript.</p>
+<h4 id="JSX-vs-Шаблоны"><a href="#JSX-vs-Шаблоны" class="headerlink" title="JSX vs Шаблоны"></a>JSX vs Шаблоны</h4><p>В React все компоненты реализуют свой UI в render-функциях с использованием JSX, декларативным XML-подобным синтаксисом, который работает в JavaScript.</p>
 <p>Render-функции с JSX имеют несколько преимуществ:</p>
 <ul>
 <li><p>Вы можете использовать все возможности языка программирования (JavaScript) для построения своего представления. Это включает в себя временные переменные, управление ветвлением и прямые ссылки на значения JavaScript в области видимости.</p>
@@ -693,7 +682,7 @@
 <h2 id="Angular-известный-также-как-Angular-2"><a href="#Angular-известный-также-как-Angular-2" class="headerlink" title="Angular (известный также как Angular 2)"></a>Angular (известный также как Angular 2)</h2><p>Мы выделяем отдельную секцию для нового Angular, поскольку по сути он полностью отличен от AngularJS. Например, теперь он содержит полноценную компонентную систему; кроме того, многие детали имплементации были полностью переписаны, а API очень существенно изменился.</p>
 <h3 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h3><p>Для Angular требуется использовать TypeScript, поскольку почти вся его документация и учебные ресурсы основаны на TypeScript. TypeScript имеет свои очевидные преимущества — проверка статических типов может быть очень полезна для крупных приложений, и может добавить производительности разработчикам, работающим на Java и C#.</p>
 <p>Однако не все хотят использовать TypeScript. Часто для небольших приложений введение системы типов может привести к большему увеличению накладных расходов нежели увеличению производительности разработки. В таких случаях вам лучше воспользоваться Vue, так как использовать Angular без TypeScript может быть сложным.</p>
-<p>Наконец, хотя Vue и не так глубого интегрирован с TypeScript как Angular, но предоставляет <a href="https://github.com/vuejs/vue/tree/dev/types" target="_blank" rel="external">официальные декларации типов</a> и <a href="https://github.com/vuejs/vue-class-component" target="_blank" rel="external">официальный декоратор</a> для тех, кто хочет использовать TypeScript с Vue. Мы также активно сотрудничаем с командами TypeScript и VSCode в Microsoft, чтобы улучшить опыт TS/IDE для пользователей Vue + TS.</p>
+<p>Наконец, хотя Vue и не так глубоко интегрирован с TypeScript как Angular, но предоставляет <a href="https://github.com/vuejs/vue/tree/dev/types" target="_blank" rel="external">официальные декларации типов</a> и <a href="https://github.com/vuejs/vue-class-component" target="_blank" rel="external">официальный декоратор</a> для тех, кто хочет использовать TypeScript с Vue. Мы также активно сотрудничаем с командами TypeScript и VSCode в Microsoft, чтобы улучшить опыт TS/IDE для пользователей Vue + TS.</p>
 <h3 id="Размер-и-быстродействие"><a href="#Размер-и-быстродействие" class="headerlink" title="Размер и быстродействие"></a>Размер и быстродействие</h3><p>В смысле производительности, оба фреймворка весьма быстры, и пока нет достаточных данных из реального мира чтобы вынести окончательный вердикт. Но если вы всё же хотите цифр, похоже что Vue 2.0 всё-таки обгоняет Angular, по крайней мере если верить этому <a href="http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html" target="_blank" rel="external">стороннему исследованию производительности</a>.</p>
 <p>Последние версии Angular, с AOT-компиляцией и tree-shaking, смогли значительно уменьшить размер сборок. Однако полнофункциональный проект Vue 2 с включёнными Vuex + vue-router (~30kb gzip) по-прежнему значительно легче из коробки, чем AOT-скомпилированное приложение, созданное с помощью <code>angular-cli</code> (~130kb gzip).</p>
 <h3 id="Гибкость"><a href="#Гибкость" class="headerlink" title="Гибкость"></a>Гибкость</h3><p>Vue значительно менее упрям, чем Angular, и поддерживает множество различных систем сборок, не ограничивая разработчиков в том, какую структуру использовать для приложения. Многим программистам эта свобода нравится, хотя есть и те, кто предпочитают иметь единственно-правильный способ построения приложения.</p>

@@ -594,22 +594,11 @@
         <div id="ad">
   <script>
     (function () {
-      var showConfPromo = Math.random() <= 0.33
-      if (showConfPromo) {
-        var c = document.createElement('div')
-        c.id = 'conf-promo'
-        c.innerHTML = '<a href="https://conf.vuejs.org" target="_blank">' +
-          '<img src="/images/conf.png" alt="vueconf">' +
-          '<span>The first VueConf EU is being held in Wrocław, Poland, June 21-23!</span>'
-        '</a>'
-        document.getElementById('ad').appendChild(c)
-      } else {
-        var s = document.createElement('script')
-        s.setAttribute('async', '')
-        s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
-        s.id = '_carbonads_js'
-        document.getElementById('ad').appendChild(s)
-      }
+      var s = document.createElement('script')
+      s.setAttribute('async', '')
+      s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
+      s.id = '_carbonads_js'
+      document.getElementById('ad').appendChild(s)
     })()
   </script>
 </div>
@@ -635,7 +624,7 @@
 <h3 id="Атрибуты"><a href="#Атрибуты" class="headerlink" title="Атрибуты"></a>Атрибуты</h3><p>Синтаксис двойных фигурных скобок не работает с HTML-атрибутами, используйте вместо него <a href="../api/#v-bind">директиву v-bind</a>:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"dynamicId"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>С булевыми атрибутами этот метод тоже работает. Если переданное свойство ложное, атрибут будет удалён полностью:</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-bind:disabled</span>=<span class="string">"someDynamicCondition"</span>&gt;</span>Кнопка<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-bind:disabled</span>=<span class="string">"isButtonDisabled"</span>&gt;</span>Кнопка<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="Использование-выражений-JavaScript"><a href="#Использование-выражений-JavaScript" class="headerlink" title="Использование выражений JavaScript"></a>Использование выражений JavaScript</h3><p>До сих пор мы связывали данные со свойствами в шаблонах только по простым ключам. Но на самом деле при связывании данных Vue поддерживает всю мощь выражений JavaScript:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line">&#123;&#123; number + 1 &#125;&#125;</div><div class="line"></div><div class="line">&#123;&#123; ok ? 'YES' : 'NO' &#125;&#125;</div><div class="line"></div><div class="line">&#123;&#123; message.split('').reverse().join('') &#125;&#125;</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">"'list-' + id"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>Эти выражения будут вычислены как JavaScript-код в области видимости соответствующего экземпляра Vue. Единственным ограничением является то, что допускается только <strong>одно выражение</strong>, так что код ниже <strong>НЕ</strong> сработает:</p>
